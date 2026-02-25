@@ -2,6 +2,8 @@
 <html>
 <head>
   <title>For Sanaya ❤️</title>
+  <!-- Mobile responsive -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       margin: 0;
@@ -70,11 +72,36 @@
       position: absolute;
       color: red;
       animation: float 6s linear infinite;
+      pointer-events: none; /* tap interference avoid */
     }
 
     @keyframes float {
       from {transform: translateY(100vh);}
       to {transform: translateY(-10vh);}
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 28px;
+        margin-top: 50px;
+      }
+
+      button {
+        padding: 12px 25px;
+        font-size: 16px;
+        border-radius: 25px;
+      }
+
+      #gift {
+        font-size: 20px;
+        margin-top: 20px;
+      }
+
+      #lyrics {
+        font-size: 18px;
+        min-height: 30px;
+      }
     }
   </style>
 </head>
@@ -91,7 +118,7 @@
   <br><br>
   Sanaya...  
   <br>
-  You are the most beautiful and important part of my life 💖  
+  You are the most beautiful part of my life 💖  
   <br>
   Teri Khuli Khuli Laton Ko Suljhaun Me Apni Ungliyon Se Me To Hoon Isi Khwahish Mein ❤️ ✨  
   <br><br>
@@ -100,7 +127,7 @@
 
 <div id="lyrics"></div>
 
-<audio id="music" src="/Tu Itni Khoobsurat Hai Fida Deedar Pe Tere ....Song Status Video ❤️ - KP status.mp3"></audio>
+<audio id="music" src="song.mp3"></audio>
 
 <script>
   const music = document.getElementById("music");
@@ -124,7 +151,7 @@
 
   function playSong() {
     music.volume = 0.5;
-    music.play();
+    music.play().catch(e => console.log("Playback error:", e));
   }
 
   music.addEventListener("timeupdate", () => {
@@ -153,5 +180,4 @@
 </script>
 
 </body>
-
 </html>
