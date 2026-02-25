@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For Sanaya ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb);
+      background-size: 300% 300%;
+      animation: gradientMove 8s ease infinite;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    @keyframes gradientMove {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    h1 {
+      margin-top: 80px;
+      font-size: 40px;
+      color: white;
+      text-shadow: 2px 2px 10px #ff4da6;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      background: #ff4da6;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 15px #ff4da6;
+      margin: 10px;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      background: #ff1a8c;
+    }
+
+    #gift {
+      display: none;
+      font-size: 24px;
+      color: white;
+      margin-top: 30px;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    #lyrics {
+      margin-top: 20px;
+      font-size: 22px;
+      color: white;
+      min-height: 40px;
+      transition: opacity 0.5s;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    .heart {
+      position: absolute;
+      color: red;
+      animation: float 6s linear infinite;
+    }
+
+    @keyframes float {
+      from {transform: translateY(100vh);}
+      to {transform: translateY(-10vh);}
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Sanaya ❤️<br>I Have Something Special For You...</h1>
+
+<button onclick="showGift()">Click for Surprise 💝</button>
+<button onclick="playSong()">▶ Play Song 🎵</button>
+
+<div id="gift">
+  🎁 Surprise! 🎁  
+  <br><br>
+  Sanaya...  
+  <br>
+  You are the most beautiful part of my life 💖  
+  <br>
+  Teri Khuli Khuli Laton Ko Suljhaun Me Apni Ungliyon Se Me To Hoon Isi Khwahish Mein ❤️ ✨  
+  <br><br>
+  Will you always stay with me? ❤️
+</div>
+
+<div id="lyrics"></div>
+
+<audio id="music" src="/Tu Itni Khoobsurat Hai Fida Deedar Pe Tere ....Song Status Video ❤️ - KP status.mp3"></audio>
+
+<script>
+  const music = document.getElementById("music");
+  const lyricsDiv = document.getElementById("lyrics");
+
+  const lyrics = [
+    { time: 0, text: "Tu itni khoobsurat hai Fida Deedar pe tere...❤️" },
+    { time: 6, text: "Mukammal Ishq Ho Mera...❤️" },
+    { time: 9, text: "Zara Sa Pyaar To Dede...❤️" },
+    { time: 12, text: "Falak Kadmo Pe Aa Jhuke ❤️" },
+    { time: 15, text: "Hasheen Lamhaat Vo Dede ❤️" },
+    { time: 18, text: "Tere Sang Bheeg Jau Me ❤️" },
+    { time: 21, text: "Kabhi Barsaat Vo Dede ❤️" },
+    { time: 25, text: "Tere Bina Jeena Pade Vo Pal Muje Na De ❤️" },
+    { time: 30, text: "Sanaya... ❤️" }
+  ];
+
+  function showGift() {
+    document.getElementById("gift").style.display = "block";
+  }
+
+  function playSong() {
+    music.volume = 0.5;
+    music.play();
+  }
+
+  music.addEventListener("timeupdate", () => {
+    const currentTime = music.currentTime;
+
+    lyrics.forEach(line => {
+      if (currentTime >= line.time && currentTime < line.time + 3) {
+        lyricsDiv.innerHTML = line.text;
+      }
+    });
+  });
+
+  // Floating hearts animation
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 20 + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 6000);
+  }, 500);
+</script>
+
+</body>
+</html>
